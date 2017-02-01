@@ -1,9 +1,5 @@
 package br.com.api.model;
 
-/**
- * Created by João on 21/06/2016.
- */
-
 public class Token {
 
     private String token;

@@ -8,10 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-/**
- * Created by João on 21/06/2016.
- */
-
 @Service
 public class UserServiceImpl implements UserService {
 
