@@ -16,8 +16,8 @@ public class Categoria {
     private Long id;
 	
 	@NotEmpty(message="A descrição não pode ser vazia")
-	@Column(length = 80, nullable = false)
-	private String nome;
+	@Column(nullable = false)
+	private String descricao;
 
 	public Long getId() {
 		return id;
@@ -27,11 +27,11 @@ public class Categoria {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}	
 }

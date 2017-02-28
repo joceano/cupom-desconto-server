@@ -35,8 +35,9 @@ public class CategoriaController {
 	}
 		
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public void save(@RequestBody Categoria categoria){
+	public Categoria save(@RequestBody Categoria categoria){
 		categoriaRepository.save(categoria);
+		return categoria;
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.PUT)
