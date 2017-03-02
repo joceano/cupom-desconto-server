@@ -33,14 +33,10 @@ public class User implements UserDetails, Serializable {
     @JsonIgnore
     @NotNull
     private String password;
-
-    @NotNull
-    @Email
-    private String email;
-
+    
     @JsonIgnore
     private Date lastPasswordReset;
-
+    
     @NotNull
     private Boolean enabled;
 
@@ -50,14 +46,13 @@ public class User implements UserDetails, Serializable {
     @NotNull
     private Date created;
 
-    public User() { // Porqueeeee
+    public User() {
     }
 
-    public User(String name, String username, String password, String email, String roles) {
+    public User(String name, String username, String password, String roles) {
         this.name = name;
         this.username = username;
         this.password = password;
-        this.email = email;
         this.roles = roles;
         this.enabled = true;
         this.created = new Date();
@@ -73,10 +68,6 @@ public class User implements UserDetails, Serializable {
 
     public void encryptPassword() {
         this.password = new BCryptPasswordEncoder().encode(this.password);
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public Date getCreated() {
@@ -117,18 +108,25 @@ public class User implements UserDetails, Serializable {
     public boolean isEnabled() {
         return enabled;
     }
-
+    
     public Date getLastPasswordReset() {
         return lastPasswordReset;
-    }
+    }        
 
-    @Override
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
                 ", enabled=" + enabled +
                 ", roles='" + roles + '\'' +
                 ", created=" + created +
