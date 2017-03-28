@@ -20,7 +20,7 @@ public class Application extends SpringBootServletInitializer {
     CommandLineRunner runner(UserService userService) {
         return args -> {
             User user = new User("Administrador", "adm@adm.com", 
-            		new BCryptPasswordEncoder().encode("admin"), "ADMIN");
+            		new BCryptPasswordEncoder().encode("admin"), "ROLE_ADMIN");
             user.setId(1L);
             System.out.println("User admin criado: " + userService.save(user));
         };
