@@ -10,38 +10,42 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.model.Categoria;
-import br.com.api.repository.CategoriaRepository;
+import br.com.api.service.CategoriaService;
 
 @RestController
 @RequestMapping("categoria")
 public class CategoriaController {
 
 	@Autowired
-	private CategoriaRepository categoriaRepository;
+	private CategoriaService categoriaService;
 		
 	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
 	public Categoria findOne(@PathVariable Long codigo){
-		return categoriaRepository.findOne(codigo);
+		return categoriaService.findOne(codigo);
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<Categoria> findAll(){
-		return categoriaRepository.findAll();
+		return categoriaService.findAll();
 	}
 		
 	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Long codigo){
-		categoriaRepository.delete(codigo);
+		categoriaService.delete(codigo);
 	}
 		
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Categoria save(@RequestBody Categoria categoria){
-		categoriaRepository.save(categoria);
-		return categoria;
+		return categoriaService.save(categoria);
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.PUT)
 	public void edit(@RequestBody Categoria categoria){
-		categoriaRepository.save(categoria);
+		categoriaService.save(categoria);
+	}
+	
+	@RequestMapping(value = "/autocomplete/{descricao}", method = RequestMethod.GET)
+	public List<Categoria> findAutocomplete(@PathVariable String descricao){
+		return categoriaService.findAutocomplete(descricao);
 	}
 }

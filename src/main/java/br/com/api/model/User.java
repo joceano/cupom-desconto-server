@@ -1,13 +1,5 @@
 package br.com.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import org.hibernate.validator.constraints.Email;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -16,10 +8,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User implements UserDetails, Serializable {
 
     private static final long serialVersionUID = 2353528370345499815L;
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
+    public static final String ROLE_USER = "ROLE_USER";
 
     @Id
     private Long id;
@@ -47,6 +47,7 @@ public class User implements UserDetails, Serializable {
     private Date created;
 
     public User() {
+    	//Método Construtor sem parâmetros
     }
 
     public User(String name, String username, String password, String roles) {
@@ -72,11 +73,20 @@ public class User implements UserDetails, Serializable {
 
     public Date getCreated() {
         return created;
-    }
+    }        
 
-    @Override
+    public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+
+	
+	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
+        return null;//AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
     @Override
@@ -131,5 +141,5 @@ public class User implements UserDetails, Serializable {
                 ", roles='" + roles + '\'' +
                 ", created=" + created +
                 '}';
-    }
+    }	
 }

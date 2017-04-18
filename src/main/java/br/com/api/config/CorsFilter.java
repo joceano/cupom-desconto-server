@@ -31,9 +31,11 @@ public class CorsFilter implements Filter {
 	}
 
 	public void init(FilterConfig filterConfig) {
+		//Método não implementado
 	}
 
 	public void destroy() {
+		//Método não implementado
 	}
 
 }

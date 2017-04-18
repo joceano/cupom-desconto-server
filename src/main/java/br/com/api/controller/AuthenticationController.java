@@ -1,10 +1,7 @@
 package br.com.api.controller;
 
-import br.com.api.model.Auth;
-import br.com.api.model.Token;
-import br.com.api.model.User;
-import br.com.api.security.TokenUtils;
-import org.apache.log4j.Logger;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
+import br.com.api.model.Auth;
+import br.com.api.model.Token;
+import br.com.api.model.User;
+import br.com.api.security.TokenUtils;
 
 @RestController
 @RequestMapping("auth")
 public class AuthenticationController {
-
-    private final Logger logger = Logger.getLogger(this.getClass());
 
     @Value("${api.token.header}")
     private String tokenHeader;
