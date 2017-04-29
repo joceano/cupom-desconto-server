@@ -27,13 +27,11 @@ public class Anuncio {
 	@Column(nullable = false)
 	private String descricao;
 	
-	@Column(name = "aprovado")
-    @Enumerated(EnumType.ORDINAL)
-    private Aprovado aprovado;
+	@NotNull
+    private Boolean aprovado;
 	
-	@Column(name = "ativo")
-    @Enumerated(EnumType.ORDINAL)
-    private Ativo ativo;
+    @NotNull
+    private Boolean ativo;
 	
 	@NotNull
 	private Long quantidade;
@@ -88,19 +86,19 @@ public class Anuncio {
 		this.descricao = descricao;
 	}
 
-	public Aprovado getAprovado() {
+	public Boolean getAprovado() {
 		return aprovado;
 	}
 
-	public void setAprovado(Aprovado aprovado) {
+	public void setAprovado(Boolean aprovado) {
 		this.aprovado = aprovado;
 	}
 
-	public Ativo getAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
 
-	public void setAtivo(Ativo ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 
@@ -191,15 +189,4 @@ public class Anuncio {
 	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
-
-	public enum Aprovado{
-        NAO,
-        SIM
-    }
-	
-	public enum Ativo{
-        NAO,
-        SIM
-    }
-
 }

@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
@@ -22,6 +24,7 @@ public class User implements UserDetails, Serializable {
     public static final String ROLE_USER = "ROLE_USER";
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -29,12 +32,11 @@ public class User implements UserDetails, Serializable {
 
     @NotNull
     private String username;
-
-    @JsonIgnore
+        
     @NotNull
-    private String password;
-    
-    @JsonIgnore
+    private String password;        
+
+	@JsonIgnore
     private Date lastPasswordReset;
     
     @NotNull
@@ -59,7 +61,11 @@ public class User implements UserDetails, Serializable {
         this.created = new Date();
     }
 
-    public void setId(Long id) {
+    public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public void setId(Long id) {
         this.id = id;
     }
 
@@ -93,6 +99,10 @@ public class User implements UserDetails, Serializable {
     public String getPassword() {
         return password;
     }
+    
+    public void setPassword(String password) {
+		this.password = password;
+	}
 
     @Override
     public String getUsername() {

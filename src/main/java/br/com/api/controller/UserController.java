@@ -1,7 +1,10 @@
 package br.com.api.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,5 +38,30 @@ public class UserController {
     public ResponseEntity<?> save(@RequestBody User user) {
         return ResponseEntity.ok(this.userService.save(user));
     }
+    
+    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
+	public User findOne(@PathVariable Long codigo){
+		return userService.find(codigo);
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public List<User> findAll(){
+		return userService.findAll();							
+	}			
+
+	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable Long codigo){
+		userService.delete(codigo);
+	}
+		
+	@RequestMapping(value = "/{senha}", method = RequestMethod.POST)
+	public User salvar(@RequestBody User user, @PathVariable String senha){		
+		return userService.save(user, senha);
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.PUT)
+	public void edit(@RequestBody User user){
+		userService.save(user);
+	}
 
 }
