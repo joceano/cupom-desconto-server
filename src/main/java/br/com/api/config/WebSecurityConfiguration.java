@@ -69,6 +69,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/auth/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/user/logged").permitAll();
+        httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/user/**").permitAll();
         //httpSecurity.authorizeRequests().antMatchers("/categoria/**").hasRole("ADMIN");
         
         /*

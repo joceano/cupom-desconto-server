@@ -47,6 +47,8 @@ public class User implements UserDetails, Serializable {
 
     @NotNull
     private Date created;
+    
+    private String telefone;
 
     public User() {
     	//Método Construtor sem parâmetros
@@ -128,8 +130,8 @@ public class User implements UserDetails, Serializable {
     public boolean isEnabled() {
         return enabled;
     }
-    
-    public Date getLastPasswordReset() {
+
+	public Date getLastPasswordReset() {
         return lastPasswordReset;
     }        
 
@@ -139,6 +141,14 @@ public class User implements UserDetails, Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}	
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	@Override
