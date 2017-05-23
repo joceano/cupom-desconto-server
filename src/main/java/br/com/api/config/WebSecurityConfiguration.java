@@ -68,12 +68,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/auth/**").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/home/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/user/logged").permitAll();
         httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/user/**").permitAll();
-        //httpSecurity.authorizeRequests().antMatchers("/categoria/**").hasRole("ADMIN");
+        
         
         /*
-        //TODO Somente para testes. Retirar depois!
+        TODO Somente para testes. Retirar depois!
+        httpSecurity.authorizeRequests().antMatchers("/categoria/**").hasRole("ADMIN");
         httpSecurity.authorizeRequests().antMatchers("/pais/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/estado/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/cidade/**").permitAll();

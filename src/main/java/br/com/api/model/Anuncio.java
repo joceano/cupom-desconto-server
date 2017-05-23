@@ -58,13 +58,11 @@ public class Anuncio {
 	
 	private String regulamento;
 	
-	//TODO Alterar para LAZY na sequência.
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "categoria", referencedColumnName = "id")
 	private Categoria categoria;
 	
-	//TODO Alterar para LAZY na sequência.
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario", referencedColumnName = "id")

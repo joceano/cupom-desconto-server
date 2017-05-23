@@ -26,7 +26,6 @@ public class Estado {
 	@Column(nullable = false)
 	private String uf;
 	
-	//TODO Alterar para LAZY na sequência.
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "pais", referencedColumnName = "id")

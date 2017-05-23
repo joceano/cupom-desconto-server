@@ -23,7 +23,6 @@ public class Cidade {
 	@Column(nullable = false)
 	private String nome;
 	
-	//TODO Alterar para LAZY na sequência.
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "estado", referencedColumnName = "id")
