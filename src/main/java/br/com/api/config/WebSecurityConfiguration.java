@@ -70,18 +70,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests().antMatchers("/auth/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/home/**").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/user/logged").permitAll();
-        httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/user/**").permitAll();
-        
-        
-        /*
-        TODO Somente para testes. Retirar depois!
-        httpSecurity.authorizeRequests().antMatchers("/categoria/**").hasRole("ADMIN");
-        httpSecurity.authorizeRequests().antMatchers("/pais/**").permitAll();
-        httpSecurity.authorizeRequests().antMatchers("/estado/**").permitAll();
-        httpSecurity.authorizeRequests().antMatchers("/cidade/**").permitAll();
-        httpSecurity.authorizeRequests().antMatchers("/anuncio/**").permitAll();
-        */
-        
+        httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/user/**").permitAll();        
+        //httpSecurity.authorizeRequests().antMatchers("/cupom/**").hasAnyRole("USER,ADMIN");        
         httpSecurity.authorizeRequests().anyRequest().authenticated();
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);               
     }
