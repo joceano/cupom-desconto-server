@@ -15,6 +15,8 @@ public interface CupomService {
 	
 	void delete(Long codigo);
 	
+	String pegarCupom(Cupom cupom);
+	
 	Cupom save(Cupom cupom);
 	
 	void edit(Cupom cupom);

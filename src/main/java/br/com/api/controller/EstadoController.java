@@ -29,11 +29,6 @@ public class EstadoController {
 		return estadoService.findAll();
 	}
 	
-	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Long codigo){
-		estadoService.delete(codigo);
-	}
-	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Estado save(@RequestBody Estado estado){		
 		return estadoService.save(estado);

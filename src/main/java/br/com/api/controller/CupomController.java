@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.model.Anuncio;
@@ -30,23 +31,24 @@ public class CupomController {
 		return cupomService.findAll();
 	}
 	
-	@RequestMapping(value = "anuncios/", method = RequestMethod.POST)
+	@RequestMapping(value = "anuncios/", method = RequestMethod.POST)	
 	public List<Cupom> findByAnuncio(@RequestBody Anuncio anuncio){
 		return cupomService.findByAnuncio(anuncio);
 	}
 		
-	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Long codigo){
-		cupomService.delete(codigo);
+	@RequestMapping(value = "pegarcupom/", method = RequestMethod.POST, produces = "text/plain")	
+	@ResponseBody
+	public String pegarCupom(@RequestBody Cupom cupom){
+		return cupomService.pegarCupom(cupom);
 	}
-		
-	@RequestMapping(value = "/", method = RequestMethod.POST)	
+	
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Cupom save(@RequestBody Cupom cupom){
 		return cupomService.save(cupom);
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.PUT)
 	public void edit(@RequestBody Cupom cupom){
-		cupomService.save(cupom);
+		cupomService.edit(cupom);
 	}
 }

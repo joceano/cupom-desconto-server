@@ -29,11 +29,6 @@ public class CidadeController {
 		return cidadeService.findAll();
 	}
 	
-	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Long codigo){
-		cidadeService.delete(codigo);
-	}
-	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Cidade save(@RequestBody Cidade cidade){		
 		return cidadeService.save(cidade);

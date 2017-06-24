@@ -52,7 +52,23 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User save(User user, String senha) {
-		
+		User usuario = tratarUsuario(user, senha);		    	
+    	return this.userRepository.save(usuario);
+	}
+
+	@Override
+	public String salvarNovoUsuario(User user, String senha) {
+		User usuario = userRepository.findByUsername(user.getUsername());
+		if (usuario == null) {
+			usuario = tratarUsuario(user, senha);
+			userRepository.save(user);
+			return "O usuário " + usuario.getName() + " foi salvo com sucesso.";
+		} else {
+			return "Ops, seu usuário já foi cadastrado.";
+		}
+	}
+	
+	private User tratarUsuario(User user, String senha) {
 		if (!senha.isEmpty()) {    		
 			user.setPassword(senha);
 			user.encryptPassword();
@@ -65,7 +81,6 @@ public class UserServiceImpl implements UserService {
     	if (user.getRoles() == null || user.getRoles().isEmpty()) {
     		user.setRoles(User.ROLE_USER);
     	}
-    	
-    	return this.userRepository.save(user);
+		return user;
 	}
 }

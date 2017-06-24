@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.model.User;
@@ -47,16 +48,17 @@ public class UserController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<User> findAll(){
 		return userService.findAll();							
-	}			
-
-	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Long codigo){
-		userService.delete(codigo);
 	}
 		
 	@RequestMapping(value = "/{senha}", method = RequestMethod.POST)
 	public User salvar(@RequestBody User user, @PathVariable String senha){		
 		return userService.save(user, senha);
+	}
+	
+	@RequestMapping(value = "/novo/{senha}", method = RequestMethod.POST, produces = "text/plain")
+	@ResponseBody
+	public String salvarNovoUsuario(@RequestBody User user, @PathVariable String senha){		
+		return userService.salvarNovoUsuario(user, senha);
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.PUT)

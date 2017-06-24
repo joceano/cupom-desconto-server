@@ -13,5 +13,7 @@ public interface CupomRepository extends JpaRepository<Cupom, Long>{
 	List<Cupom> findByUsuario(User usuario);
 	
 	List<Cupom> findByAnuncio(Anuncio anuncio);
+	
+	List<Cupom> findByAnuncioAndUsuario(Anuncio anuncio, User usuario);
 
 }

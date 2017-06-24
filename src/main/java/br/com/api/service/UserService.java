@@ -10,6 +10,8 @@ public interface UserService {
     User save(User user);
     
     User save(User user, String senha);
+    
+    String salvarNovoUsuario(User user, String senha);
 
     User find(Long id);
 

@@ -27,11 +27,6 @@ public class AnuncioController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<Anuncio> findAll(){
 		return anuncioService.findAll();							
-	}			
-
-	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Long codigo){
-		anuncioService.delete(codigo);
 	}
 		
 	@RequestMapping(value = "/", method = RequestMethod.POST)

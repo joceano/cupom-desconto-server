@@ -29,11 +29,6 @@ public class PaisController {
 		return paisService.findAll();
 	}
 	
-	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Long codigo){
-		paisService.delete(codigo);
-	}
-	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Pais save(@RequestBody Pais pais){		
 		return paisService.save(pais);

@@ -29,11 +29,6 @@ public class CategoriaController {
 		return categoriaService.findAll();
 	}
 		
-	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable Long codigo){
-		categoriaService.delete(codigo);
-	}
-		
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public Categoria save(@RequestBody Categoria categoria){
 		return categoriaService.save(categoria);
