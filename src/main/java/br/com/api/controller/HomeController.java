@@ -21,5 +21,4 @@ public class HomeController {
 	public List<Anuncio> findAll(){
 		return homeService.findAll();							
 	}
-
 }

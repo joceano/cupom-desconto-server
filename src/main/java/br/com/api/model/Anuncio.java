@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -66,6 +67,17 @@ public class Anuncio {
 	@JoinColumn(name = "usuario", referencedColumnName = "id")
 	private User usuario;
 	
+	@Transient
+	private Integer restante;
+	
+	public Integer getRestante() {
+		return restante;
+	}
+
+	public void setRestante(Integer restante) {
+		this.restante = restante;
+	}
+
 	public Long getId() {
 		return id;
 	}

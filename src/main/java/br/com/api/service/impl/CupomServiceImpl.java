@@ -81,7 +81,7 @@ public class CupomServiceImpl implements CupomService {
 				validarCotaCupomExcedido(cupom);
 				return "Parabéns, seu desconto está garantido!";
 			} catch (Exception e) {
-				return "Opsss, não foi possível adquirir esse cupom!";
+				return "Ops, não foi possível adquirir esse cupom!";
 			}
 		}
 	}	
