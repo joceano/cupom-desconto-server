@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.api.model.Anuncio;
 import br.com.api.service.AnuncioService;
@@ -37,5 +39,11 @@ public class AnuncioController {
 	@RequestMapping(value = "/", method = RequestMethod.PUT)
 	public void edit(@RequestBody Anuncio anuncio){
 		anuncioService.save(anuncio);
+	}
+	
+	@RequestMapping(value = "/upload/{codigo}", method = RequestMethod.POST) 
+    public void upload(@PathVariable Long codigo,
+    		@RequestParam("uploadfile") MultipartFile uploadfile) throws Exception {		
+		anuncioService.upload(codigo, uploadfile);		
 	}
 }

@@ -2,6 +2,8 @@ package br.com.api.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import br.com.api.model.Anuncio;
 
 public interface AnuncioService {
@@ -15,5 +17,7 @@ public interface AnuncioService {
 	Anuncio save(Anuncio anuncio);
 	
 	void edit(Anuncio anuncio);
+	
+	void upload(Long codigo, MultipartFile uploadfile) throws Exception;
 
 }

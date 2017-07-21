@@ -57,6 +57,8 @@ public class Anuncio {
 	
 	private String regulamento;
 	
+	private String diretorio;
+
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "categoria", referencedColumnName = "id")
@@ -196,5 +198,13 @@ public class Anuncio {
 
 	public void setUsuario(User usuario) {
 		this.usuario = usuario;
+	}
+	
+	public String getDiretorio() {
+		return diretorio;
+	}
+
+	public void setDiretorio(String diretorio) {
+		this.diretorio = diretorio;
 	}
 }
