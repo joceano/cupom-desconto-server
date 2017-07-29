@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.model.Auth;
 import br.com.api.model.Token;
-import br.com.api.model.User;
+import br.com.api.model.Usuario;
 import br.com.api.security.TokenUtils;
 
 @RestController
@@ -57,7 +57,7 @@ public class AuthenticationController {
     public ResponseEntity<?> authenticationRequest(HttpServletRequest request) {
         String token = request.getHeader(this.tokenHeader);
         String username = this.tokenUtils.getUsernameFromToken(token);
-        User user = (User) this.userDetailsService.loadUserByUsername(username);
+        Usuario user = (Usuario) this.userDetailsService.loadUserByUsername(username);
         if (this.tokenUtils.canTokenBeRefreshed(token, user.getLastPasswordReset())) {
             String refreshedToken = this.tokenUtils.refreshToken(token);
             return ResponseEntity.ok(new Token(refreshedToken));

@@ -1,9 +1,9 @@
 package br.com.api.service;
 
-import br.com.api.model.User;
+import br.com.api.model.Usuario;
 
 public interface SecurityService {
 
-    User userLogged();
+    Usuario userLogged();
 
 }

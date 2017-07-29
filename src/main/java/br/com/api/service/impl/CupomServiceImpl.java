@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.api.model.Anuncio;
 import br.com.api.model.Cupom;
-import br.com.api.model.User;
+import br.com.api.model.Usuario;
 import br.com.api.repository.CupomRepository;
 import br.com.api.service.AnuncioService;
 import br.com.api.service.CupomService;
@@ -123,8 +123,8 @@ public class CupomServiceImpl implements CupomService {
 	}
 	
 	private List<Cupom> retornarCupons() {
-        User userLogado =  securityService.userLogged();						
-		if (userLogado != null && userLogado.getRoles().equals(User.ROLE_USER)) {
+        Usuario userLogado =  securityService.userLogged();						
+		if (userLogado != null && userLogado.getRoles().equals(Usuario.ROLE_USER)) {
 			return cupomRepository.findByUsuario(userLogado);
 		} else {
 			return cupomRepository.findAll();

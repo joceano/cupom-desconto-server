@@ -21,7 +21,7 @@ public class Cupom {
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario", referencedColumnName = "id")
-	private User usuario;
+	private Usuario usuario;
 	
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -50,11 +50,11 @@ public class Cupom {
 		this.id = id;
 	}
 
-	public User getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(User usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 

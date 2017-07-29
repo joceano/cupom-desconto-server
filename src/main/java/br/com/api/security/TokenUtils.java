@@ -10,7 +10,7 @@ import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import br.com.api.model.User;
+import br.com.api.model.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -153,7 +153,7 @@ public class TokenUtils {
 
 	@SuppressWarnings("unused")
 	public Boolean validateToken(String token, UserDetails userDetails) {
-		User user = (User) userDetails;
+		Usuario user = (Usuario) userDetails;
 		final String username = this.getUsernameFromToken(token);
 		final Date created = this.getCreatedDateFromToken(token);
 		final Date expiration = this.getExpirationDateFromToken(token);

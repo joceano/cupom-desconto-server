@@ -67,7 +67,7 @@ public class Anuncio {
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario", referencedColumnName = "id")
-	private User usuario;
+	private Usuario usuario;
 	
 	@Transient
 	private Integer restante;
@@ -192,11 +192,11 @@ public class Anuncio {
 		this.categoria = categoria;
 	}
 
-	public User getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(User usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 	

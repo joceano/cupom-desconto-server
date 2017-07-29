@@ -1,7 +1,7 @@
 package br.com.api.service.impl;
 
-import br.com.api.model.User;
-import br.com.api.repository.UserRepository;
+import br.com.api.model.Usuario;
+import br.com.api.repository.UsuarioRepository;
 import br.com.api.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 public class SecurityServiceImpl implements SecurityService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UsuarioRepository userRepository;
 
     @Override
-    public User userLogged() {
+    public Usuario userLogged() {
         String login = null;
         SecurityContext context = SecurityContextHolder.getContext();
         if (context instanceof SecurityContext) {

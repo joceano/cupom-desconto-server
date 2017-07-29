@@ -1,7 +1,7 @@
 package br.com.api;
 
-import br.com.api.model.User;
-import br.com.api.service.UserService;
+import br.com.api.model.Usuario;
+import br.com.api.service.UsuarioService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,9 +17,9 @@ public class Application extends SpringBootServletInitializer {
     }
 
     @Bean
-    CommandLineRunner runner(UserService userService) {
+    CommandLineRunner runner(UsuarioService userService) {
         return args -> {
-            User userAdmin = new User("Administrador", "adm@adm.com", 
+            Usuario userAdmin = new Usuario("Administrador", "adm@adm.com", 
             		new BCryptPasswordEncoder().encode("admin"), "ROLE_ADMIN");            
             userAdmin.setId(1L);
             userService.save(userAdmin);

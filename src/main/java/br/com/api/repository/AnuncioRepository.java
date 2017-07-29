@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import br.com.api.model.Anuncio;
-import br.com.api.model.User;
+import br.com.api.model.Usuario;
 
 public interface AnuncioRepository extends JpaRepository<Anuncio, Long>{
 	
-	List<Anuncio> findByUsuario(User usuario);
+	List<Anuncio> findByUsuario(Usuario usuario);
 	
 	@Query("select a from Anuncio a where a.aprovado = ?1 and a.ativo = ?2 and "+
 		   "?3 between a.dataInicial and a.dataFinal")

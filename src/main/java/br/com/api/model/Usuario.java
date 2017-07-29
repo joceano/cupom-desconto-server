@@ -20,7 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class User implements UserDetails, Serializable {
+public class Usuario implements UserDetails, Serializable {
 
     private static final long serialVersionUID = 2353528370345499815L;
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
@@ -65,11 +65,11 @@ public class User implements UserDetails, Serializable {
 	@JoinColumn(name = "cidade", referencedColumnName = "id")
     private Cidade cidade;
 
-    public User() {
+    public Usuario() {
     	//Método Construtor sem parâmetros
     }
 
-    public User(String name, String username, String password, String roles) {
+    public Usuario(String name, String username, String password, String roles) {
         this.name = name;
         this.username = username;
         this.password = password;

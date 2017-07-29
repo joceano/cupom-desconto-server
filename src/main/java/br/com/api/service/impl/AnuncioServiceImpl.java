@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.api.model.Anuncio;
-import br.com.api.model.User;
+import br.com.api.model.Usuario;
 import br.com.api.repository.AnuncioRepository;
 import br.com.api.service.AnuncioService;
 import br.com.api.service.SecurityService;
@@ -62,8 +62,8 @@ public class AnuncioServiceImpl implements AnuncioService{
 	}
 	
 	private List<Anuncio> retornarAnuncios() {
-        User userLogado =  securityService.userLogged();						
-		if (userLogado != null && userLogado.getRoles().equals(User.ROLE_USER)) {
+        Usuario userLogado =  securityService.userLogged();						
+		if (userLogado != null && userLogado.getRoles().equals(Usuario.ROLE_USER)) {
 			return anuncioRepository.findByUsuario(userLogado);
 		} else {
 			return anuncioRepository.findAll();

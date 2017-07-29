@@ -1,13 +1,13 @@
 package br.com.api.repository;
 
-import br.com.api.model.User;
+import br.com.api.model.Usuario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    User findByUsername(String username);
+    Usuario findByUsername(String username);
 
 }

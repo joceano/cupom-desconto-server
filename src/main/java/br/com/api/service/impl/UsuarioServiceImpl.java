@@ -7,18 +7,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.api.model.User;
-import br.com.api.repository.UserRepository;
-import br.com.api.service.UserService;
+import br.com.api.model.Usuario;
+import br.com.api.repository.UsuarioRepository;
+import br.com.api.service.UsuarioService;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UsuarioRepository userRepository;
 
     @Override
-    public User save(User user) {    	    	  
+    public Usuario save(Usuario user) {    	    	  
     	if (user.getId() == null) {
     		user.encryptPassword();
     	}        
@@ -26,12 +26,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User find(Long id) {
+    public Usuario find(Long id) {
         return this.userRepository.findOne(id);
     }
 
     @Override
-    public Collection<User> find() {
+    public Collection<Usuario> find() {
         return this.userRepository.findAll();
     }
 
@@ -41,24 +41,24 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void edit(User user) {
+	public void edit(Usuario user) {
 		userRepository.save(user);		
 	}
 
 	@Override
-	public List<User> findAll() {
+	public List<Usuario> findAll() {
 		return userRepository.findAll();
 	}
 
 	@Override
-	public User save(User user, String senha) {
-		User usuario = tratarUsuario(user, senha);		    	
+	public Usuario save(Usuario user, String senha) {
+		Usuario usuario = tratarUsuario(user, senha);		    	
     	return this.userRepository.save(usuario);
 	}
 
 	@Override
-	public String salvarNovoUsuario(User user, String senha) {
-		User usuario = userRepository.findByUsername(user.getUsername());
+	public String salvarNovoUsuario(Usuario user, String senha) {
+		Usuario usuario = userRepository.findByUsername(user.getUsername());
 		if (usuario == null) {
 			usuario = tratarUsuario(user, senha);
 			userRepository.save(user);
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
-	private User tratarUsuario(User user, String senha) {
+	private Usuario tratarUsuario(Usuario user, String senha) {
 		if (!senha.isEmpty()) {    		
 			user.setPassword(senha);
 			user.encryptPassword();
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
     	}
     	
     	if (user.getRoles() == null || user.getRoles().isEmpty()) {
-    		user.setRoles(User.ROLE_USER);
+    		user.setRoles(Usuario.ROLE_USER);
     	}
 		return user;
 	}
