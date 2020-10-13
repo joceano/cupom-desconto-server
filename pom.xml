@@ -17,7 +17,7 @@
 		<jjwt.version>0.4</jjwt.version>
 		<jackson.version>2.5.3</jackson.version>
 		<apache-commons.version>3.0</apache-commons.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 	</properties>
 
 	<!-- Parent information -->
