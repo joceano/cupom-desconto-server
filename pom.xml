@@ -15,7 +15,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<jjwt.version>0.4</jjwt.version>
-		<jackson.version>2.5.3</jackson.version>
+		<jackson.version>2.9.10.8</jackson.version>
 		<apache-commons.version>3.0</apache-commons.version>
 		<junit.version>4.12</junit.version>
 	</properties>
